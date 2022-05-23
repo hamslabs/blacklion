@@ -1,0 +1,47 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+          "name": "ATSAMD21 Mini: Local OpenOCD",
+          "type": "cortex-debug",
+          "request": "launch",
+          "servertype": "openocd",
+          "device": "ATSAMD21G18A",
+          "runToMain": true,
+          "executable": "${workspaceFolder}/build/app/atsamd21.elf",
+          // TODO: This works without the svd, find out if it should be added for atsamd21 mini
+          // "svdFile": "${workspaceFolder}/.vscode/ATSAME54P20A.svd",
+          "cwd": "${workspaceRoot}",
+          "configFiles": [
+            "interface/picoprobe.cfg",
+            "target/at91samdXX.cfg"
+          ],
+          "showDevDebugOutput": "raw",
+          "gdbPath" : "arm-none-eabi-gdb",
+          "postRestartCommands": [
+            "break main",
+            "continue"
+          ],
+          "searchDir": ["C:\\openocd\\tcl"],
+      },
+        // TODO: Convert this to atsamd21 mini if possible
+        // {
+        //     "name": "Microchip: Remote",
+        //     "type": "cortex-debug",
+        //     "executable": "${workspaceFolder}/build/app/atsame54_azure_iot.elf",
+        //     "request": "launch",
+        //     "servertype": "external",
+        //     "gdbTarget": "${input:device.host}",
+        //     "runToMain": true,
+        //     "svdFile": "${workspaceFolder}/.vscode/ATSAME54P20A.svd",
+        // }
+    ],
+    "inputs": [
+        {
+            "id": "device.host",
+            "type": "promptString",
+            "default": "host.docker.internal:3333",
+            "description": "The local hostname with port for GDB to connect to"
+        }
+    ]
+}
