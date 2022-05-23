@@ -1,0 +1,9 @@
+[submodule "shared/lib/threadx"]
+	path = shared/lib/threadx
+	url = git@github.com:azure-rtos/threadx.git
+[submodule "shared/lib/netxduo"]
+	path = shared/lib/netxduo
+	url = git@github.com:azure-rtos/netxduo.git
+[submodule "shared/lib/filex"]
+	path = shared/lib/filex
+	url = git@github.com:azure-rtos/filex.git
